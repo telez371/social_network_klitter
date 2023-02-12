@@ -22,3 +22,13 @@
 </p>
 
 ## Документация
+
+swagger documentation.
+
+
+Example Request
+
+<pre>
+<span class="key">//api/v1/swagger/</span>
+</pre>
+

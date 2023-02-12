@@ -3,6 +3,7 @@ from .models import UserNet
 
 class GetUserNetSerializer(serializers.ModelSerializer):
     """Вывод информации о пользователе"""
+    avatar = serializers.ImageField(write_only=True)
     class Meta:
         model = UserNet
         exclude = (

@@ -41,7 +41,7 @@ class CommentsView(CreateUpdateDestroy):
         serializer.save(user=self.request.user)
 
     def perform_destroy(self, instance):
-        instance.delete = True
+        instance.deleted = True
         instance.save()
 
 

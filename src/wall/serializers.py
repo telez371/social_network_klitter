@@ -13,6 +13,7 @@ class ListCommentSerializer(serializers.ModelSerializer):
     """Список комментариев"""
     text = serializers.SerializerMethodField()
     children = RecursiveSerializer(many=True)
+    user = serializers.ReadOnlyField(source='user.username')
 
     def get_text(self, obj):
         if obj.deleted:
@@ -22,7 +23,7 @@ class ListCommentSerializer(serializers.ModelSerializer):
     class Meta:
         list_serializer_class = FilterCommentListSerializer
         model = Comment
-        fields = ("id", "post", "text", "created_date", "update_date", "deleted", "children" )
+        fields = ("id", "post", "user", "text", "created_date", "update_date", "deleted", "children" )
 
 
 

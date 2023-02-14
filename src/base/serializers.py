@@ -11,6 +11,6 @@ class FilterCommentListSerializer(serializers.ListSerializer):
 
 class RecursiveSerializer(serializers.Serializer):
     """Вывод Рекурсивно"""
-    def to_representation(self, instance):
-        serializers = self.parent.parent.__class__(instance, context=self.context)
-        return serializers
+    def to_representation(self, value):
+        serializer = self.parent.parent.__class__(value, context=self.context)
+        return serializer.data

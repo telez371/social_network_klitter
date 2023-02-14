@@ -5,7 +5,7 @@ from src.wall.models import Post, Comment
 
 
 @admin.register(Post)
-class CommentAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     """Модель постов"""
     list_display = ("user", "view_count", "create_date", "moderation", "published", "id")
 

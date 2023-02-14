@@ -21,3 +21,12 @@ class GetUserPublicSerializer(serializers.ModelSerializer):
             "is_active", "is_staff", "is_superuser",
             "groups", "user_permissions",
         )
+
+
+
+class UserByFollowerSerializer(serializers.ModelSerializer):
+        """Сериалайзер для подписчиков"""
+        avatar = serializers.ImageField(write_only=True)
+        class Meta:
+            model = UserNet
+            fields = ('id', 'username', 'avatar')

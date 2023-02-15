@@ -12,16 +12,18 @@ class ListFollowerView(generics.ListAPIView):
     def get_queryset(self):
         return Follower.objects.filter(user=self.request.user)
 
-class AddFollowerView(views.APIView):
+class FollowerView(views.APIView):
     """Добавление в подписчики"""
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, pk):
-        user = UserNet.objects.filter(ad=pk)
-        if user.exists():
-            Follower.objects.create(subscriber=request.user, user=user)
-            return response.Response(status=201)
-        return response.Response(status=404)
+        try:
+            user = UserNet.objects.get(id=pk)
+        except Follower.DoesNotExist:
+            return response.Response(status=404)
+        Follower.objects.create(subscriber=request.user, user=user)
+        return response.Response(status=201)
+
 
     def delete(self, request, pk):
         try:

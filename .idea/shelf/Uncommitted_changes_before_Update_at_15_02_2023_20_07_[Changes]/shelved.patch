@@ -1,0 +1,79 @@
+Index: src/feed/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from rest_framework import generics, permissions, viewsets, response\r\nfrom src.wall.serializers import ListPostSerializer, PostSerializer\r\nfrom .services import feed_service\r\n\r\n\r\nclass FeedView(viewsets.GenericViewSet):\r\n    permission_classes = [permissions.IsAuthenticated]\r\n    serializer_class = ListPostSerializer\r\n\r\n    def list(self, request, *args, **kwargs):\r\n        queryset = feed_service.get_post_list(request.user)\r\n        serializer = self.get_serializer(queryset, many=True)\r\n        return response.Response(serializer.data)\r\n\r\n\r\n    def retrieve(self, request, *args, **kwargs):\r\n        isinstance = feed_service.get_single_post(kwargs.get('pk'))\r\n        serializer = PostSerializer(isinstance)\r\n        return response.Response(serializer.data)\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/feed/views.py b/src/feed/views.py
+--- a/src/feed/views.py	(revision caaa6f958e7f68648addeb4346e7376c47cd035e)
++++ b/src/feed/views.py	(date 1676479707036)
+@@ -8,14 +8,14 @@
+     serializer_class = ListPostSerializer
+ 
+     def list(self, request, *args, **kwargs):
+-        queryset = feed_service.get_post_list(request.user)
+-        serializer = self.get_serializer(queryset, many=True)
++        queryset_1 = feed_service.get_post_list(request.user)
++        serializer = self.get_serializer(queryset_1, many=True)
+         return response.Response(serializer.data)
+ 
+ 
+     def retrieve(self, request, *args, **kwargs):
+-        isinstance = feed_service.get_single_post(kwargs.get('pk'))
+-        serializer = PostSerializer(isinstance)
++        instance = feed_service.get_single_post(kwargs.get('pk'))
++        serializer = PostSerializer(instance)
+         return response.Response(serializer.data)
+ 
+ 
+Index: src/feed/manangement/commands/addfake.py
+===================================================================
+diff --git a/src/feed/manangement/commands/addfake.py b/src/feed/manangement/commands/addfake.py
+deleted file mode 100644
+--- a/src/feed/manangement/commands/addfake.py	(revision caaa6f958e7f68648addeb4346e7376c47cd035e)
++++ /dev/null	(revision caaa6f958e7f68648addeb4346e7376c47cd035e)
+@@ -1,39 +0,0 @@
+-from django.core.management.base import BaseCommand
+-from src.profiles.models import UserNet
+-from src.followers.models import Follower
+-from src.wall.models import Post
+-
+-
+-class Command(BaseCommand):
+-
+-    def handle(self, *args, **options):
+-        self.create_user()
+-        self.create_follower()
+-        self.create_post()
+-        self.stdout("Success")
+-
+-    def create_user(self):
+-        for i in range(10):
+-            user = UserNet.objects.create(
+-                username=f"test {i+1}",
+-                email=f"test{i}@gmail.com",
+-                is_active=True,
+-                middle_name=f"test {i}",
+-                phone=f"1234567891{i}",
+-                gender=1
+-
+-            )
+-            user.set_password("sfsdfgsgw")
+-            user.save()
+-
+-
+-    def create_follower(self):
+-        user_list = UserNet.objects.order_by()[2:]
+-        for user in user_list:
+-            Follower.objects.create(user_id=user, subscriber_id=1)
+-
+-
+-    def create_post(self):
+-        user_list = UserNet.objects.all()
+-        for user in user_list:
+-            Post.objects.create(text="Text post", user=user)
+diff --git a/src/feed/manangement/commands/__init__.py b/src/feed/manangement/commands/__init__.py
+deleted file mode 100644
+diff --git a/src/feed/manangement/__init__.py b/src/feed/manangement/__init__.py
+deleted file mode 100644

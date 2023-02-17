@@ -24,7 +24,7 @@
 ## Документация
 
 
-Прописать свои параметры PostgreSQL
+Прописать свои параметры PostgreSQL в DATABASES
 
 <pre>
 <span class="key">/social_network_klitter/klitter/settings.py</span>
@@ -54,5 +54,5 @@ Example Request swagger documentation.
 
 
 <p align="left">
-     <a href="https://imgbb.com/"><img src="https://i.ibb.co/JdPP9Zw/bd-klitter.jpg" alt="bd-klitter" border="0"></a>
+     <a href="https://imgbb.com/"><img src="https://i.ibb.co/r0zpy2d/1.png" alt="1" border="0"></a>
 </p>

@@ -4,3 +4,4 @@ django-mptt==0.14.0
 djangorestframework==3.14.0
 Django==4.1.7
 psycopg2==2.9.5
+drf-yasg==1.21.5

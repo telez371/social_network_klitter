@@ -23,11 +23,16 @@
 
 ## Документация
 
-swagger documentation.
+
+Прописать свои параметры PostgreSQL
+
+<pre>
+<span class="key">/social_network_klitter/klitter/settings.py</span>
+</pre>
 
 
 
-Example Request
+Example Request swagger documentation.
 
 <pre>
 <span class="key">/api/v1/swagger/</span>

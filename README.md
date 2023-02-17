@@ -26,9 +26,19 @@
 swagger documentation.
 
 
+
 Example Request
 
 <pre>
 <span class="key">/api/v1/swagger/</span>
 </pre>
 
+## Docker
+
+<pre>
+<span class="key">docker build --tag kliter .</span>
+</pre>
+
+<pre>
+<span class="key">docker run -p 8080:80 -d kliter</span>
+</pre>

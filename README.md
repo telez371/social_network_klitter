@@ -42,3 +42,12 @@ Example Request
 <pre>
 <span class="key">docker run -p 8080:80 -d kliter</span>
 </pre>
+
+
+
+## Физическая схема базы данных 
+
+
+<p align="left">
+     <a href="https://imgbb.com/"><img src="https://i.ibb.co/JdPP9Zw/bd-klitter.jpg" alt="bd-klitter" border="0"></a>
+</p>

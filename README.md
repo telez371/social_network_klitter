@@ -50,9 +50,3 @@ Example Request swagger documentation.
 
 
 
-## Физическая схема базы данных 
-
-
-<p align="left">
-     <a href="https://imgbb.com/"><img src="https://i.ibb.co/r0zpy2d/1.png" alt="1" border="0"></a>
-</p>
